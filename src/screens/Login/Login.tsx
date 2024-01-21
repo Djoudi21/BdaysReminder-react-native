@@ -1,7 +1,7 @@
-import {Pressable, SafeAreaView, Text, View} from 'react-native';
-import {PATH} from '../../utils/CONSTANTS.routeS.ts';
+import { Pressable, SafeAreaView, Text, View } from 'react-native';
+import { PATH } from '../../utils/CONSTANTS.ts';
 
-export function Login({navigation}: any) {
+export function Login({ navigation }: any) {
   return (
     <SafeAreaView className={'h-screen'}>
       <Text>Login</Text>
