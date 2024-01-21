@@ -1,5 +1,5 @@
-import { Pressable, SafeAreaView, Text, View } from "react-native";
-import { PATH } from "../../utils/CONSTANTS.ts";
+import { Pressable, SafeAreaView, Text, View } from 'react-native';
+import { PATH } from '../../utils/CONSTANTS.ts';
 
 export function Register({ navigation }: any) {
   return (
