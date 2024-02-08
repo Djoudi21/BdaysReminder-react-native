@@ -7,7 +7,7 @@ import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useRegisterHook } from "./use-register.hook.tsx";
 
 export function Register({ navigation }: any) {
-  const { control, errors, handleSubmit, responseError, onSubmit, onError } =
+  const { control, errors, handleSubmit, responseError, onSubmit } =
     useRegisterHook();
   return (
     <SafeAreaView className={"h-screen flex-col flex"}>
@@ -59,10 +59,7 @@ export function Register({ navigation }: any) {
           {responseError.length > 0 && responseError}
         </Text>
 
-        <BaseButton
-          label="Submit"
-          handlePress={handleSubmit(onSubmit, onError)}
-        />
+        <BaseButton label="Submit" handlePress={handleSubmit(onSubmit)} />
       </View>
       <View className={"flex h-full flex-col items-center gap-2"}>
         <Text>Toujours pas de compte?</Text>

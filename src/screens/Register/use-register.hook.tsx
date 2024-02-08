@@ -1,4 +1,4 @@
-import { FieldErrors, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
 import { register } from "../../store/auth/use-cases/register.ts";
 import { selectRegisterError } from "../../store/auth/authSlice.ts";
@@ -8,10 +8,6 @@ export const useRegisterHook = () => {
   const responseError = useAppSelector(selectRegisterError);
   const onSubmit = (data: { email: string; password: string }) => {
     dispatch(register(data));
-  };
-
-  const onError = (errors: FieldErrors) => {
-    console.log("ERRORS", errors.email);
   };
 
   const {
@@ -29,7 +25,6 @@ export const useRegisterHook = () => {
     errors,
     handleSubmit,
     onSubmit,
-    onError,
     responseError,
   };
 };
