@@ -27,7 +27,7 @@ export const createAppStore = (
           extraArgument: dependencies,
         },
         serializableCheck: {
-          ignoredActions: [],
+          ignoredActions: [""],
         },
         preloadedState,
       }),

@@ -7,7 +7,7 @@ import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useRegisterHook } from "./use-register.hook.tsx";
 
 export function Register({ navigation }: any) {
-  const { control, errors, handleSubmit, onSubmit, onError } =
+  const { control, errors, handleSubmit, responseError, onSubmit, onError } =
     useRegisterHook();
   return (
     <SafeAreaView className={"h-screen flex-col flex"}>
@@ -21,7 +21,7 @@ export function Register({ navigation }: any) {
               required: "Veuillez saisir votre email",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "toto",
+                message: "Veuillez saisir un email valide",
               },
             }}
             render={({ field: { onChange, onBlur, value } }) => (
@@ -54,6 +54,10 @@ export function Register({ navigation }: any) {
             name="password"
           />
         </View>
+
+        <Text className={"text-error"}>
+          {responseError.length > 0 && responseError}
+        </Text>
 
         <BaseButton
           label="Submit"

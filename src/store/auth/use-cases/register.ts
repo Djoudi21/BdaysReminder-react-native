@@ -1,13 +1,19 @@
 import { createAppAsyncThunk } from "../../createAppThunk.ts";
 import { NewUser } from "../../../types.ts";
+import { REQUEST_MESSAGES } from "../../../utils/CONSTANTS.ts";
 
 export const register = createAppAsyncThunk(
   "auth/register",
   async (payload: NewUser, { extra: { authRepository } }) => {
-    try {
-      return await authRepository.register(payload);
-    } catch (error) {
-      throw new Error((error as Error).message);
+    const res = await authRepository.register(payload);
+    if (res.status !== 201) {
+      switch (res.status) {
+        case 409:
+          throw new Error(REQUEST_MESSAGES["409"]);
+        default:
+          throw new Error(REQUEST_MESSAGES["500"]);
+      }
     }
+    return res.json();
   }
 );

@@ -20,15 +20,14 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(register.fulfilled, (state, action) => {
       state.error = "";
-      console.log("FULLFIELD", action.payload);
-      // state.isLoggedIn = true;
+      state.user = action.payload.data.user;
+      state.isLoggedIn = true;
     });
     builder.addCase(register.rejected, (state, action) => {
       state.isLoggedIn = false;
-      state.error = action.error.message || "";
+      state.error = action.error.message ?? "";
     });
     builder.addCase(register.pending, (state) => {
-      console.log("PENDING");
       state.isLoading = true;
     });
   },
@@ -36,4 +35,8 @@ export const authSlice = createSlice({
 
 export const selectIsLoggedIn = (state: RootState) => {
   return state.auth.isLoggedIn;
+};
+
+export const selectRegisterError = (state: RootState) => {
+  return state.auth.error;
 };

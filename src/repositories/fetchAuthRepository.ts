@@ -8,7 +8,7 @@ export class FetchAuthRepository implements AuthRepository {
   }
 
   register(user: NewUser): Promise<any> {
-    const res = fetch("http://localhost:8080/register", {
+    return fetch("http://localhost:8080/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,6 +17,5 @@ export class FetchAuthRepository implements AuthRepository {
         data: user,
       }),
     });
-    return Promise.resolve(res);
   }
 }

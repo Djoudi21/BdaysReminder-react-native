@@ -14,7 +14,6 @@ export type Credentials = {
 export type User = { email: string; name: string; id: number };
 
 export type NewUser = {
-  name: string;
   email: string;
   password: string;
 };
