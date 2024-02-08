@@ -1,5 +1,6 @@
 import { AuthRepository } from "./interfaces/authRepisotory.ts";
 import { Credentials, NewUser } from "../types.ts";
+import { BACKEND_API_URL } from "@env";
 
 export class FetchAuthRepository implements AuthRepository {
   login(credentials: Credentials): Promise<any> {
@@ -8,7 +9,7 @@ export class FetchAuthRepository implements AuthRepository {
   }
 
   register(user: NewUser): Promise<any> {
-    return fetch("http://localhost:8080/register", {
+    return fetch(`${BACKEND_API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
