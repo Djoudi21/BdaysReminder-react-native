@@ -11,7 +11,7 @@ export type Credentials = {
   email: string;
 };
 
-export type User = { email: string; name: string; id: number };
+export type User = { email: string; id: number };
 
 export type NewUser = {
   email: string;

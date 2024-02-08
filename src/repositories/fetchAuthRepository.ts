@@ -4,8 +4,15 @@ import { BACKEND_API_URL } from "@env";
 
 export class FetchAuthRepository implements AuthRepository {
   login(credentials: Credentials): Promise<any> {
-    console.log(credentials);
-    return Promise.resolve(undefined);
+    return fetch(`${BACKEND_API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: credentials,
+      }),
+    });
   }
 
   register(user: NewUser): Promise<any> {

@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
-import { register } from "../../store/auth/use-cases/register.ts";
 import { selectAuthError } from "../../store/auth/authSlice.ts";
+import { login } from "../../store/auth/use-cases/login.ts";
 
-export const useRegisterHook = () => {
+export const useLoginHook = () => {
   const dispatch = useAppDispatch();
   const responseError = useAppSelector(selectAuthError);
   const onSubmit = (data: { email: string; password: string }) => {
-    dispatch(register(data));
+    dispatch(login(data));
   };
 
   const {
