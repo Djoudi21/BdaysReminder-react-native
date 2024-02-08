@@ -27,7 +27,7 @@ export function RootStackRouter() {
         </RootStack.Group>
       )}
       {/* Common modal screens */}
-      <RootStack.Group screenOptions={{ presentation: 'modal' }}>
+      <RootStack.Group screenOptions={{ presentation: "modal" }}>
         <RootStack.Screen name="Help" component={Help} />
       </RootStack.Group>
     </RootStack.Navigator>

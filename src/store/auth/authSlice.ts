@@ -1,20 +1,37 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {RootState} from '../store.ts';
+import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store.ts";
+import { register } from "./use-cases/register.ts";
 
 const initialState = {
   user: {
-    name: 'name',
-    email: 'user.email@gmail.com',
+    name: "name",
+    email: "user.email@gmail.com",
     id: 0,
   },
   isLoggedIn: false,
+  error: "",
+  isLoading: false,
 };
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {},
-  extraReducers: () => {},
+  extraReducers: (builder) => {
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.error = "";
+      console.log("FULLFIELD", action.payload);
+      // state.isLoggedIn = true;
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      state.isLoggedIn = false;
+      state.error = action.error.message || "";
+    });
+    builder.addCase(register.pending, (state) => {
+      console.log("PENDING");
+      state.isLoading = true;
+    });
+  },
 });
 
 export const selectIsLoggedIn = (state: RootState) => {

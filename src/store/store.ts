@@ -3,22 +3,28 @@ import {
   combineReducers,
   configureStore,
   ThunkDispatch,
-} from '@reduxjs/toolkit';
-import {authSlice} from './auth/authSlice.ts';
+} from "@reduxjs/toolkit";
+import { authSlice } from "./auth/authSlice.ts";
+import { AuthRepository } from "../repositories/interfaces/authRepisotory.ts";
+
+export type Dependencies = {
+  authRepository: AuthRepository;
+};
 
 export const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
 });
 
 export const createAppStore = (
-  preloadedState?: Partial<ReturnType<typeof rootReducer>>,
+  dependencies: Dependencies,
+  preloadedState?: Partial<ReturnType<typeof rootReducer>>
 ) => {
   return configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware =>
+    middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
-          extraArgument: {},
+          extraArgument: dependencies,
         },
         serializableCheck: {
           ignoredActions: [],
@@ -29,5 +35,5 @@ export const createAppStore = (
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppDispatch = ThunkDispatch<RootState, {}, Action>;
+export type AppDispatch = ThunkDispatch<RootState, Dependencies, Action>;
 export type AppStore = ReturnType<typeof createAppStore>;
