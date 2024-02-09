@@ -10,6 +10,8 @@ export const login = createAppAsyncThunk(
       switch (res.status) {
         case 404:
           throw new Error(REQUEST_MESSAGES["404"]);
+        case 401:
+          throw new Error(REQUEST_MESSAGES["401"]);
         default:
           throw new Error(REQUEST_MESSAGES["500"]);
       }

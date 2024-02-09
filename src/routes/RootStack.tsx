@@ -4,8 +4,8 @@ import { selectIsLoggedIn } from "../store/auth/authSlice.ts";
 import { Login } from "../screens/Login/Login.tsx";
 import { Register } from "../screens/Register/Register.tsx";
 import { Help } from "../screens/Help.tsx";
-import { Home } from "../screens/Home.tsx";
 import { PATH } from "../utils/CONSTANTS.ts";
+import { BottomTabsStack } from "./BottomTabsStack.tsx";
 
 const RootStack = createNativeStackNavigator();
 
@@ -17,7 +17,7 @@ export function RootStackRouter() {
       {isLoggedIn ? (
         // Screens for logged in user
         <RootStack.Group>
-          <RootStack.Screen name={PATH.home} component={Home} />
+          <RootStack.Screen name={PATH.home} component={BottomTabsStack} />
         </RootStack.Group>
       ) : (
         // Auth screens
