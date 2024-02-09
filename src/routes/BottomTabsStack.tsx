@@ -16,9 +16,9 @@ export function BottomTabsStack() {
         name={PATH.home}
         component={Home}
         options={{
-          title: "Home",
+          title: "Rechercher",
           tabBarIcon: ({ color, size }) => (
-            <FeatherIcons name={"home"} color={color} size={size} />
+            <FeatherIcons name={"search"} color={color} size={size} />
           ),
         }}
       />
@@ -26,9 +26,9 @@ export function BottomTabsStack() {
         name={PATH.profile}
         component={Profile}
         options={{
-          title: "Profile",
+          title: "Mon compte",
           tabBarIcon: ({ color, size }) => (
-            <FeatherIcons name={"settings"} color={color} size={size} />
+            <FeatherIcons name={"user"} color={color} size={size} />
           ),
         }}
       />
