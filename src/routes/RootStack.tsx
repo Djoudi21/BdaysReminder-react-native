@@ -11,6 +11,15 @@ const RootStack = createNativeStackNavigator();
 
 export function RootStackRouter() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const refreshToken = useAppSelector(selectRefreshToken);
+  // const { checkRefreshTokenValidity } = useTokensHook();
+  //
+  // useEffect(() => {
+  //   if (refreshToken) {
+  //     // Check refresh token validity when the component mounts or refresh token changes
+  //     checkRefreshTokenValidity();
+  //   }
+  // }, [refreshToken]);
 
   return (
     <RootStack.Navigator>

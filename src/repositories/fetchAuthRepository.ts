@@ -26,4 +26,13 @@ export class FetchAuthRepository implements AuthRepository {
       }),
     });
   }
+
+  logout(): Promise<any> {
+    return fetch(`${BACKEND_API_URL}/logout`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }
