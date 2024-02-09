@@ -17,7 +17,7 @@ export function RootStackRouter() {
       {isLoggedIn ? (
         // Screens for logged in user
         <RootStack.Group>
-          <RootStack.Screen name={PATH.home} component={BottomTabsStack} />
+          <RootStack.Screen name={PATH.root} component={BottomTabsStack} />
         </RootStack.Group>
       ) : (
         // Auth screens
