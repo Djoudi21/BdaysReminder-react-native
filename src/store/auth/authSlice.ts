@@ -49,7 +49,7 @@ export const authSlice = createSlice({
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(logout.fulfilled, (state, action) => {
+    builder.addCase(logout.fulfilled, (state) => {
       state.error = "";
       state.tokens = {
         refreshToken: "",
