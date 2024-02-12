@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
-import { register } from "../../store/auth/use-cases/register.ts";
+import { register } from "../../store/auth/use-cases/register/register.ts";
 import { selectAuthError } from "../../store/auth/authSlice.ts";
 
 export const useRegisterHook = () => {

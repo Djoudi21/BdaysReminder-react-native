@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store.ts";
-import { register } from "./use-cases/register.ts";
-import { login } from "./use-cases/login.ts";
+import { register } from "./use-cases/register/register.ts";
+import { login } from "./use-cases/login/login.ts";
 import { logout } from "./use-cases/logout.ts";
 
 const initialState = {
@@ -43,7 +43,7 @@ export const authSlice = createSlice({
       if ("tokens" in action.payload) {
         state.tokens = {
           accessToken: action.payload.tokens.accessToken,
-          refreshToken: action.payload.tokens.refreshTokens,
+          refreshToken: action.payload.tokens.refreshToken,
         };
       }
       state.isLoggedIn = true;

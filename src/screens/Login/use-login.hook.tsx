@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
 import { selectAuthError } from "../../store/auth/authSlice.ts";
-import { login } from "../../store/auth/use-cases/login.ts";
+import { login } from "../../store/auth/use-cases/login/login.ts";
 
 export const useLoginHook = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
-import { createAppAsyncThunk } from "../../createAppThunk.ts";
-import { NewUser } from "../../../types.ts";
-import { REQUEST_MESSAGES } from "../../../utils/CONSTANTS.ts";
+import { createAppAsyncThunk } from "../../../createAppThunk.ts";
+import { NewUser } from "../../../../types.ts";
+import { REQUEST_MESSAGES } from "../../../../utils/CONSTANTS.ts";
 
 export const register = createAppAsyncThunk(
   "auth/register",

@@ -1,10 +1,10 @@
-import { createAppAsyncThunk } from "../../createAppThunk.ts";
+import { createAppAsyncThunk } from "../../../createAppThunk.ts";
+import { REQUEST_MESSAGES } from "../../../../utils/CONSTANTS.ts";
 import {
   Credentials,
   LoginUserResponse,
   LoginUserResponseError,
-} from "../../../types.ts";
-import { REQUEST_MESSAGES } from "../../../utils/CONSTANTS.ts";
+} from "./types.ts";
 
 export const login = createAppAsyncThunk(
   "auth/login",
