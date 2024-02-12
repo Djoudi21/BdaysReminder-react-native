@@ -6,6 +6,27 @@ export type RegisterUserResponse = {
   };
 };
 
+export type LoginUserResponse = {
+  tokens: {
+    accessToken: string;
+    refreshTokens: string;
+  };
+  data: {
+    user: {
+      email: string;
+      id: number;
+    };
+    status: 200;
+  };
+};
+
+export type LoginUserResponseError = {
+  data: {
+    message: string;
+    status: 401 | 404;
+  };
+};
+
 export type Credentials = {
   password: string;
   email: string;

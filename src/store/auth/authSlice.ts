@@ -6,7 +6,6 @@ import { logout } from "./use-cases/logout.ts";
 
 const initialState = {
   user: {
-    name: "name",
     email: "user.email@gmail.com",
     id: 0,
   },
@@ -38,8 +37,15 @@ export const authSlice = createSlice({
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.error = "";
-      state.user = action.payload.data.user;
-      state.tokens = action.payload.tokens;
+      if ("user" in action.payload.data) {
+        state.user = action.payload.data.user;
+      }
+      if ("tokens" in action.payload) {
+        state.tokens = {
+          accessToken: action.payload.tokens.accessToken,
+          refreshToken: action.payload.tokens.refreshTokens,
+        };
+      }
       state.isLoggedIn = true;
     });
     builder.addCase(login.rejected, (state, action) => {

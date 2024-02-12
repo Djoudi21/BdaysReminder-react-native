@@ -1,13 +1,20 @@
 import { createAppAsyncThunk } from "../../createAppThunk.ts";
-import { Credentials } from "../../../types.ts";
+import {
+  Credentials,
+  LoginUserResponse,
+  LoginUserResponseError,
+} from "../../../types.ts";
 import { REQUEST_MESSAGES } from "../../../utils/CONSTANTS.ts";
 
 export const login = createAppAsyncThunk(
   "auth/login",
-  async (payload: Credentials, { extra: { authRepository } }) => {
+  async (
+    payload: Credentials,
+    { extra: { authRepository } }
+  ): Promise<LoginUserResponse | LoginUserResponseError> => {
     const res = await authRepository.login(payload);
-    if (res.status !== 200) {
-      switch (res.status) {
+    if (res.data.status !== 200) {
+      switch (res.data.status) {
         case 404:
           throw new Error(REQUEST_MESSAGES["404"]);
         case 401:
@@ -16,6 +23,6 @@ export const login = createAppAsyncThunk(
           throw new Error(REQUEST_MESSAGES["500"]);
       }
     }
-    return res.json();
+    return res;
   }
 );
