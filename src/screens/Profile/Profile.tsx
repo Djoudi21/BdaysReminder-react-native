@@ -12,7 +12,7 @@ export function Profile() {
         <Text>Profile</Text>
         <Pressable
           className={
-            "border-2 bg-purple border-solid border-lavender rounded-3xl p-4"
+            "border-2 bg-purple border-solid border-lavender rounded-3xl p-2"
           }
           onPress={handleSubmit}
         >
