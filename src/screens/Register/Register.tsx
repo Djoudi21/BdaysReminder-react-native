@@ -1,7 +1,6 @@
 import { Pressable, SafeAreaView, Text, View } from "react-native";
 import { PATH } from "../../utils/CONSTANTS.ts";
 import React from "react";
-import BaseButton from "../../components/atomics/BaseButton.tsx";
 import { Controller } from "react-hook-form";
 import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useRegisterHook } from "./use-register.hook.tsx";
@@ -10,10 +9,10 @@ export function Register({ navigation }: any) {
   const { control, errors, handleSubmit, responseError, onSubmit } =
     useRegisterHook();
   return (
-    <SafeAreaView className={"h-screen p-4 flex-col flex"}>
-      <View
-        className={"flex flex-col h-4/5 items-center justify-center w-full"}
-      >
+    <SafeAreaView className={"h-screen bg-whitesmoke flex-col flex"}>
+      <View className={"m-4"}>
+        <Text className="text-xl text-midnightBlue my-6">Inscrivez-vous</Text>
+
         <View className={"w-full flex flex-col gap-4 items-center"}>
           <View className={"w-full flex flex-col items-center"}>
             <Controller
@@ -63,12 +62,19 @@ export function Register({ navigation }: any) {
           {responseError.length > 0 && responseError}
         </Text>
 
-        <BaseButton label="Submit" handlePress={handleSubmit(onSubmit)} />
+        <Pressable
+          className={
+            "border-2 bg-purple border-solid border-lavender rounded-3xl p-4"
+          }
+          onPress={handleSubmit(onSubmit)}
+        >
+          <Text className={"text-center text-hanPurple"}>Validez</Text>
+        </Pressable>
       </View>
-      <View className={"flex h-full flex-col gap-2 items-center"}>
-        <Text>Toujours pas de compte?</Text>
+      <View className="flex flex-row items-center my-10 justify-center">
+        <Text className="text-mediumSlateBlue mr-2">Déja un compte?</Text>
         <Pressable onPress={() => navigation.push(PATH.login)}>
-          <Text>Connectez-vous</Text>
+          <Text className="text-lightSlateBlue">Connectez-vous</Text>
         </Pressable>
       </View>
     </SafeAreaView>

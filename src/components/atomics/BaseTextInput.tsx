@@ -12,17 +12,25 @@ interface Props extends TextInputProps {
 export const BaseTextInput = forwardRef<TextInput, Props>(
   (props: Props, ref) => {
     const { label, labelStyle, error, ...inputProps } = props;
-
+    const borderStyle = () => {
+      return error
+        ? "border border-solid border-error"
+        : "border border-solid border-lavender";
+    };
     return (
-      <View className={"flex flex-col justify-center gap-4 w-full"}>
-        {label && <Text className={`${labelStyle}`}>{label}</Text>}
-        <TextInput
-          autoCapitalize="none"
-          ref={ref}
-          className={"border border-solid border-primary rounded-md px-4 py-2"}
-          {...inputProps}
-        />
-        <Text className={"text-[#cb0505]"}>{error && error.message}</Text>
+      <View className={"w-full gap-2"}>
+        <View
+          className={`${borderStyle()} rounded-3xl px-4 h-10 w-full flex items-center justify-center flex-col`}
+        >
+          {label && <Text className={`${labelStyle}`}>{label}</Text>}
+          <TextInput
+            autoCapitalize="none"
+            ref={ref}
+            className={"w-full h-full"}
+            {...inputProps}
+          />
+        </View>
+        <Text className={"text-error pl-4"}>{error && error.message}</Text>
       </View>
     );
   }
