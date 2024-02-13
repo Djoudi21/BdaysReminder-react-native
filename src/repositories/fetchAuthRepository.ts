@@ -1,11 +1,16 @@
 import { AuthRepository } from "./interfaces/authRepisotory.ts";
+
+import { BACKEND_API_URL } from "@env";
+import {
+  NewUser,
+  RegisterUserResponse,
+  RegisterUserResponseError,
+} from "../store/auth/use-cases/register/types.ts";
 import {
   Credentials,
   LoginUserResponse,
   LoginUserResponseError,
-  NewUser,
-} from "../types.ts";
-import { BACKEND_API_URL } from "@env";
+} from "../store/auth/use-cases/login/types.ts";
 
 export class FetchAuthRepository implements AuthRepository {
   async login(
@@ -23,8 +28,10 @@ export class FetchAuthRepository implements AuthRepository {
     return await response.json();
   }
 
-  register(user: NewUser): Promise<any> {
-    return fetch(`${BACKEND_API_URL}/register`, {
+  async register(
+    user: NewUser
+  ): Promise<RegisterUserResponse | RegisterUserResponseError> {
+    const response = await fetch(`${BACKEND_API_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,6 +40,7 @@ export class FetchAuthRepository implements AuthRepository {
         data: user,
       }),
     });
+    return await response.json();
   }
 
   logout(): Promise<any> {
