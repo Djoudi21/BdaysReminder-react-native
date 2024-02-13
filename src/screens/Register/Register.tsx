@@ -10,49 +10,53 @@ export function Register({ navigation }: any) {
   const { control, errors, handleSubmit, responseError, onSubmit } =
     useRegisterHook();
   return (
-    <SafeAreaView className={"h-screen flex-col flex"}>
+    <SafeAreaView className={"h-screen p-4 flex-col flex"}>
       <View
         className={"flex flex-col h-4/5 items-center justify-center w-full"}
       >
-        <View className={"w-full"}>
-          <Controller
-            control={control}
-            rules={{
-              required: "Veuillez saisir votre email",
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Veuillez saisir un email valide",
-              },
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <BaseTextInput
-                placeholder="email"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                error={errors.email}
-                name={"email"}
-              />
-            )}
-            name="email"
-          />
-          <Controller
-            control={control}
-            rules={{
-              required: "Veuillez saisir votre mot de passe",
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <BaseTextInput
-                placeholder="mot de passe"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                error={errors.password}
-                name={"password"}
-              />
-            )}
-            name="password"
-          />
+        <View className={"w-full flex flex-col gap-4 items-center"}>
+          <View className={"w-full flex flex-col items-center"}>
+            <Controller
+              control={control}
+              rules={{
+                required: "Veuillez saisir votre email",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Veuillez saisir un email valide",
+                },
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <BaseTextInput
+                  placeholder="email"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  error={errors.email}
+                  name={"email"}
+                />
+              )}
+              name="email"
+            />
+          </View>
+          <View className={"w-full flex flex-col items-center"}>
+            <Controller
+              control={control}
+              rules={{
+                required: "Veuillez saisir votre mot de passe",
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <BaseTextInput
+                  placeholder="mot de passe"
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  error={errors.password}
+                  name={"password"}
+                />
+              )}
+              name="password"
+            />
+          </View>
         </View>
 
         <Text className={"text-error"}>
@@ -61,7 +65,7 @@ export function Register({ navigation }: any) {
 
         <BaseButton label="Submit" handlePress={handleSubmit(onSubmit)} />
       </View>
-      <View className={"flex h-full flex-col items-center gap-2"}>
+      <View className={"flex h-full flex-col gap-2 items-center"}>
         <Text>Toujours pas de compte?</Text>
         <Pressable onPress={() => navigation.push(PATH.login)}>
           <Text>Connectez-vous</Text>
