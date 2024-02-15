@@ -6,8 +6,8 @@ export const register = createAppAsyncThunk(
   "auth/register",
   async (payload: NewUser, { extra: { authRepository } }) => {
     const res = await authRepository.register(payload);
-    if (res.data.status !== 201) {
-      switch (res.data.status) {
+    if (res.status !== 201) {
+      switch (res.status) {
         case 409:
           throw new Error(REQUEST_MESSAGES["409"]);
         default:
