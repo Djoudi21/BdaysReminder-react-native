@@ -83,6 +83,10 @@ export const selectIsLoggedIn = (state: RootState) => {
   return state.auth.isLoggedIn;
 };
 
+export const selectCurrentUser = (state: RootState) => {
+  return state.auth.user;
+};
+
 export const selectAuthError = (state: RootState) => {
   return state.auth.error;
 };
