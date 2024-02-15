@@ -6,6 +6,7 @@ import { login } from "../../store/auth/use-cases/login/login.ts";
 export const useLoginHook = () => {
   const dispatch = useAppDispatch();
   const responseError = useAppSelector(selectAuthError);
+
   const onSubmit = (data: { email: string; password: string }) => {
     dispatch(login(data));
   };
@@ -20,6 +21,7 @@ export const useLoginHook = () => {
       password: "",
     },
   });
+
   return {
     control,
     errors,

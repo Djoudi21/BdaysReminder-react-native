@@ -4,10 +4,14 @@ import React from "react";
 import { Controller } from "react-hook-form";
 import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useLoginHook } from "./use-login.hook.tsx";
+import FeatherIcons from "react-native-vector-icons/Feather";
+import { usePasswordHook } from "../../hooks/use-password.hook.ts";
 
 export function Login({ navigation }: any) {
   const { control, errors, handleSubmit, responseError, onSubmit } =
     useLoginHook();
+  const { isPasswordVisible, passwordIconToDisplay, handlePasswordIcon } =
+    usePasswordHook();
 
   return (
     <SafeAreaView className={"h-screen bg-whitesmoke flex-col flex"}>
@@ -33,6 +37,7 @@ export function Login({ navigation }: any) {
                   value={value}
                   error={errors.email}
                   name={"email"}
+                  inputMode={"email"}
                 />
               )}
               name="email"
@@ -52,7 +57,14 @@ export function Login({ navigation }: any) {
                   value={value}
                   error={errors.password}
                   name={"password"}
-                />
+                  secureTextEntry={isPasswordVisible}
+                >
+                  <FeatherIcons
+                    onPress={handlePasswordIcon}
+                    name={passwordIconToDisplay}
+                    size={20}
+                  />
+                </BaseTextInput>
               )}
               name="password"
             />
