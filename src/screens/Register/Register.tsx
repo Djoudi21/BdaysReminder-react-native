@@ -4,10 +4,15 @@ import React from "react";
 import { Controller } from "react-hook-form";
 import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useRegisterHook } from "./use-register.hook.tsx";
+import FeatherIcons from "react-native-vector-icons/Feather";
+import { usePasswordHook } from "../../hooks/use-password.hook.ts";
 
 export function Register({ navigation }: any) {
   const { control, errors, handleSubmit, responseError, onSubmit } =
     useRegisterHook();
+  const { isPasswordVisible, passwordIconToDisplay, handlePasswordIcon } =
+    usePasswordHook();
+
   return (
     <SafeAreaView className={"h-screen bg-whitesmoke flex-col flex"}>
       <View className={"m-4"}>
@@ -51,7 +56,14 @@ export function Register({ navigation }: any) {
                   value={value}
                   error={errors.password}
                   name={"password"}
-                />
+                  secureTextEntry={isPasswordVisible}
+                >
+                  <FeatherIcons
+                    onPress={handlePasswordIcon}
+                    name={passwordIconToDisplay}
+                    size={20}
+                  />
+                </BaseTextInput>
               )}
               name="password"
             />
