@@ -16,6 +16,6 @@ export const login = createAppAsyncThunk(
           throw new Error(REQUEST_MESSAGES["500"]);
       }
     }
-    return res;
+    return await res.json();
   }
 );

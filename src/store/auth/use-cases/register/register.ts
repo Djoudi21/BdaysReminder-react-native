@@ -14,6 +14,6 @@ export const register = createAppAsyncThunk(
           throw new Error(REQUEST_MESSAGES["500"]);
       }
     }
-    return res;
+    return await res.json();
   }
 );
