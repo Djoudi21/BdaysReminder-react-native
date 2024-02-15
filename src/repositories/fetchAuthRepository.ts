@@ -6,17 +6,11 @@ import {
   RegisterUserResponse,
   RegisterUserResponseError,
 } from "../store/auth/use-cases/register/types.ts";
-import {
-  Credentials,
-  LoginUserResponse,
-  LoginUserResponseError,
-} from "../store/auth/use-cases/login/types.ts";
+import { Credentials } from "../store/auth/use-cases/login/types.ts";
 
 export class FetchAuthRepository implements AuthRepository {
-  async login(
-    credentials: Credentials
-  ): Promise<LoginUserResponse | LoginUserResponseError> {
-    const response = await fetch(`${BACKEND_API_URL}/login`, {
+  async login(credentials: Credentials): Promise<any> {
+    return fetch(`${BACKEND_API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +19,6 @@ export class FetchAuthRepository implements AuthRepository {
         data: credentials,
       }),
     });
-    return await response.json();
   }
 
   async register(

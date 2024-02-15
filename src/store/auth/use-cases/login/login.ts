@@ -1,20 +1,13 @@
 import { createAppAsyncThunk } from "../../../createAppThunk.ts";
 import { REQUEST_MESSAGES } from "../../../../utils/CONSTANTS.ts";
-import {
-  Credentials,
-  LoginUserResponse,
-  LoginUserResponseError,
-} from "./types.ts";
+import { Credentials } from "./types.ts";
 
 export const login = createAppAsyncThunk(
   "auth/login",
-  async (
-    payload: Credentials,
-    { extra: { authRepository } }
-  ): Promise<LoginUserResponse | LoginUserResponseError> => {
+  async (payload: Credentials, { extra: { authRepository } }): Promise<any> => {
     const res = await authRepository.login(payload);
-    if (res.data.status !== 200) {
-      switch (res.data.status) {
+    if (res.status !== 200) {
+      switch (res.status) {
         case 404:
           throw new Error(REQUEST_MESSAGES["404"]);
         case 401:
