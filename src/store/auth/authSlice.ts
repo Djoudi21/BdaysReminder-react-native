@@ -21,7 +21,11 @@ const initialState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    resetErrorMessage: (state) => {
+      state.error = "";
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(register.fulfilled, (state, action) => {
       if ("user" in action.payload.data) {
@@ -78,6 +82,8 @@ export const authSlice = createSlice({
     });
   },
 });
+
+export const { resetErrorMessage } = authSlice.actions;
 
 export const selectIsLoggedIn = (state: RootState) => {
   return state.auth.isLoggedIn;

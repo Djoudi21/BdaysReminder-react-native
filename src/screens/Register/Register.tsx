@@ -1,15 +1,21 @@
 import { Pressable, SafeAreaView, Text, View } from "react-native";
-import { PATH } from "../../utils/CONSTANTS.ts";
 import React from "react";
 import { Controller } from "react-hook-form";
 import { BaseTextInput } from "../../components/atomics/BaseTextInput.tsx";
 import { useRegisterHook } from "./use-register.hook.tsx";
 import FeatherIcons from "react-native-vector-icons/Feather";
 import { usePasswordHook } from "../../hooks/use-password.hook.ts";
+import { BaseToaster } from "../../components/atomics/BaseToaster.tsx";
 
-export function Register({ navigation }: any) {
-  const { control, errors, handleSubmit, responseError, onSubmit } =
-    useRegisterHook();
+export function Register({ navigation }: { navigation: string[] }) {
+  const {
+    control,
+    errors,
+    handleSubmit,
+    responseError,
+    onSubmit,
+    navigateToLogin,
+  } = useRegisterHook(navigation);
   const { isPasswordVisible, passwordIconToDisplay, handlePasswordIcon } =
     usePasswordHook();
 
@@ -70,9 +76,7 @@ export function Register({ navigation }: any) {
           </View>
         </View>
 
-        <Text className={"text-error"}>
-          {responseError.length > 0 && responseError}
-        </Text>
+        <BaseToaster message={responseError} className={"text-error"} />
 
         <Pressable
           className={
@@ -85,7 +89,7 @@ export function Register({ navigation }: any) {
       </View>
       <View className="flex flex-row items-center my-10 justify-center">
         <Text className="text-mediumSlateBlue mr-2">Déja un compte?</Text>
-        <Pressable onPress={() => navigation.push(PATH.login)}>
+        <Pressable onPress={navigateToLogin}>
           <Text className="text-lightSlateBlue">Connectez-vous</Text>
         </Pressable>
       </View>
