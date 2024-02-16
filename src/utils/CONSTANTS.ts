@@ -2,8 +2,9 @@ export const PATH = {
   root: "root",
   home: "home",
   register: "register",
-  login: "login",
+  login: "Login",
   profile: "profile",
+  help: "help",
 } as const;
 
 export const REQUEST_MESSAGES = {

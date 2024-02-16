@@ -16,7 +16,7 @@ export function RootStackRouter() {
     <RootStack.Navigator>
       {isLoggedIn ? (
         // Screens for logged in user
-        <RootStack.Group>
+        <RootStack.Group screenOptions={{ headerShown: false }}>
           <RootStack.Screen name={PATH.root} component={BottomTabsStack} />
         </RootStack.Group>
       ) : (
@@ -28,7 +28,7 @@ export function RootStackRouter() {
       )}
       {/* Common modal screens */}
       <RootStack.Group screenOptions={{ presentation: "modal" }}>
-        <RootStack.Screen name="Help" component={Help} />
+        <RootStack.Screen name={PATH.help} component={Help} />
       </RootStack.Group>
     </RootStack.Navigator>
   );

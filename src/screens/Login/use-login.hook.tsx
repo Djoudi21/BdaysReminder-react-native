@@ -7,7 +7,7 @@ import {
 import { login } from "../../store/auth/use-cases/login/login.ts";
 import { PATH } from "../../utils/CONSTANTS.ts";
 
-export const useLoginHook = (navigation: string[]) => {
+export const useLoginHook = (navigation: any) => {
   const dispatch = useAppDispatch();
   const responseError = useAppSelector(selectAuthError);
 
