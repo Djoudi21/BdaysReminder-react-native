@@ -8,7 +8,7 @@ export const PATH = {
 
 export const REQUEST_MESSAGES = {
   409: "L'utilisateur existe déjà. Veuillez choisir un autre nom d'utilisateur.",
-  500: "Une erreur est survenue",
-  404: "Aucun utilisateur n'a été trouvé. Veuillez vérifier votre email",
-  401: "Utilisateur non autorisé. Veuillez vérifier votre mot de passe",
+  500: "Une erreur réseau est survenue",
+  404: "Aucun utilisateur trouvé, vérifiez votre email",
+  401: "Utilisateur non autorisé, vérifiez votre mot de passe",
 } as const;

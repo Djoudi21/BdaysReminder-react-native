@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View, ViewProps } from "react-native";
 import { useToasterHook } from "../../hooks/use-toaster.hook.ts";
+import { ReactNode } from "react";
 
 interface Props extends ViewProps {
   message: string;
+  children?: ReactNode;
 }
-export function BaseToaster({ message, ...rest }: Props) {
+export function BaseToaster({ message, children, ...rest }: Props) {
   const { displayToaster } = useToasterHook();
   const styles = StyleSheet.create({
     shadow: {
@@ -13,19 +15,22 @@ export function BaseToaster({ message, ...rest }: Props) {
         width: 0,
         height: 3,
       },
-      shadowOpacity: 0.6,
-      shadowRadius: 7,
-      elevation: 6,
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 2,
     },
   });
 
   return message.length > 0 && displayToaster ? (
     <View
-      className={"absolute p-4 rounded-lg bg-bright"}
+      className={
+        "absolute p-4 w-full flex flex-row items-center justify-center rounded-lg bg-bright"
+      }
       style={styles.shadow}
       {...rest}
     >
-      <Text>{message}</Text>
+      {children}
+      <Text className={"text-error ml-2 text-center"}>{message}</Text>
     </View>
   ) : null;
 }

@@ -76,7 +76,9 @@ export function Register({ navigation }: { navigation: string[] }) {
           </View>
         </View>
 
-        <BaseToaster message={responseError} className={"text-error"} />
+        <BaseToaster message={responseError}>
+          <FeatherIcons name={"x-circle"} size={18} color={"#cb0505"} />
+        </BaseToaster>
 
         <Pressable
           className={

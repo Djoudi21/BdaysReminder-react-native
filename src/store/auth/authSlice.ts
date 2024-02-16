@@ -3,6 +3,7 @@ import { RootState } from "../store.ts";
 import { register } from "./use-cases/register/register.ts";
 import { login } from "./use-cases/login/login.ts";
 import { logout } from "./use-cases/logout.ts";
+import { errorMessageMapper } from "../../utils/errorMessageMapper.ts";
 
 const initialState = {
   user: {
@@ -61,7 +62,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       state.isLoggedIn = false;
-      state.error = action.error.message ?? "";
+      state.error = errorMessageMapper(action.error.message ?? "");
     });
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;

@@ -77,7 +77,9 @@ export function Login({ navigation }: { navigation: string[] }) {
           </View>
         </View>
 
-        <BaseToaster message={responseError} />
+        <BaseToaster message={responseError}>
+          <FeatherIcons name={"x-circle"} size={18} color={"#cb0505"} />
+        </BaseToaster>
 
         <Pressable
           className={
