@@ -41,6 +41,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-BdaysReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdaysReminder.release.xcconfig"; path = "Target Support Files/Pods-BdaysReminder/Pods-BdaysReminder.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-BdaysReminder-BdaysReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdaysReminder-BdaysReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-BdaysReminder-BdaysReminderTests/Pods-BdaysReminder-BdaysReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-BdaysReminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BdaysReminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		757ADC6D42D48E1F83B24733 /* Pods-BdaysReminder-BdaysReminderTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdaysReminder-BdaysReminderTests.staging.xcconfig"; path = "Target Support Files/Pods-BdaysReminder-BdaysReminderTests/Pods-BdaysReminder-BdaysReminderTests.staging.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BdaysReminder/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8425230D2B75B36800ECE595 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		8425230E2B75B36800ECE595 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		8425231E2B75B36800ECE595 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		8425231F2B75B36800ECE595 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-BdaysReminder-BdaysReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdaysReminder-BdaysReminderTests.release.xcconfig"; path = "Target Support Files/Pods-BdaysReminder-BdaysReminderTests/Pods-BdaysReminder-BdaysReminderTests.release.xcconfig"; sourceTree = "<group>"; };
+		BA2CEF1725E8FCB5356026CB /* Pods-BdaysReminder.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdaysReminder.staging.xcconfig"; path = "Target Support Files/Pods-BdaysReminder/Pods-BdaysReminder.staging.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,8 @@
 				5709B34CF0A7D63546082F79 /* Pods-BdaysReminder.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-BdaysReminder-BdaysReminderTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-BdaysReminder-BdaysReminderTests.release.xcconfig */,
+				BA2CEF1725E8FCB5356026CB /* Pods-BdaysReminder.staging.xcconfig */,
+				757ADC6D42D48E1F83B24733 /* Pods-BdaysReminder-BdaysReminderTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -799,7 +803,7 @@
 		};
 		843F698A2B803790009B12DE /* staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-BdaysReminder.debug.xcconfig */;
+			baseConfigurationReference = BA2CEF1725E8FCB5356026CB /* Pods-BdaysReminder.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -829,7 +833,7 @@
 		};
 		843F698B2B803790009B12DE /* staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-BdaysReminder-BdaysReminderTests.debug.xcconfig */;
+			baseConfigurationReference = 757ADC6D42D48E1F83B24733 /* Pods-BdaysReminder-BdaysReminderTests.staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
