@@ -31,7 +31,7 @@ platform :ios do
 
   lane :beta do
     build_app(scheme: "BdaysReminder-stagings",
-              workspace: "BdaysReminder.xcworkspace",
+              project: './ios/BdaysReminder.xcodeproj',
               include_bitcode: true)
   end
 
