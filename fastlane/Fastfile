@@ -1,0 +1,49 @@
+before_all do
+  ensure_git_branch
+  ensure_git_status_clean
+  git_pull
+end
+
+platform :ios do
+   # iOS Lanes
+  private_lane :update_version do
+    increment_version_number_in_plist(xcodeproj: './ios/BdaysReminder.xcodeproj', bump_type: 'patch')
+    gym(scheme: 'BdaysReminder', project: './ios/BdaysReminder.xcodeproj', workspace: './ios/BdaysReminder.xcworkspace')
+  end
+
+   private_lane :staging_build do
+     increment_build_number_in_plist(xcodeproj: './ios/BdaysReminder.xcodeproj', target: 'BdaysReminder')
+     gym(scheme: 'BdaysReminder-staging', project: './ios/BdaysReminder.xcodeproj', workspace: './ios/BdaysReminder.xcworkspace')
+   end
+
+  private_lane :release_build do
+    increment_build_number_in_plist(xcodeproj: './ios/BdaysReminder.xcodeproj', target: 'BdaysReminder')
+    gym(scheme: 'BdaysReminder-release', project: './ios/BdaysReminder.xcodeproj', workspace: './ios/BdaysReminder.xcworkspace')
+  end
+
+  desc 'IOS build and release to beta.'
+  lane :beta do
+      staging_build
+      upload_to_testflight(username: '', app_identifier: 'BdaysReminder')
+      commit_version_bump(message: 'bump build')
+      push_to_git_remote
+  end
+
+    lane :release do
+        release_build
+        deliver
+        commit_version_bump(message: 'bump build')
+        push_to_git_remote
+    end
+end
+
+platform :android do
+  # Android Lanes
+  desc 'Android build and release to beta.'
+  lane :beta do
+      increment_version_code(app_project_dir: ('./android/app'))
+      gradle(task: 'clean', project_dir: './android/')
+      gradle(task: 'bundle', build_type: 'Release',  project_dir: './android')
+      supply(track: 'beta', aab: './android/app/build/release/app-release.aab')
+  end
+end

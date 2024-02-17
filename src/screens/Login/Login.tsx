@@ -21,7 +21,7 @@ export function Login({ navigation }: { navigation: string[] }) {
 
   return (
     <SafeAreaView className={"h-screen bg-whitesmoke flex-col flex"}>
-      <View className={"m-4"}>
+      <View testID="toto" className={"m-4"}>
         <Text className="text-xl text-midnightBlue my-6">Connectez-vous</Text>
 
         <View className={"w-full flex flex-col gap-4 items-center"}>
