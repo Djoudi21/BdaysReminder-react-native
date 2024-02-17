@@ -30,7 +30,9 @@ platform :ios do
 #   end
 
   lane :beta do
-    build_app(scheme: "BdaysReminder-stagings",
+    get_certificates           # invokes cert
+    get_provisioning_profile   # invokes sigh
+    build_app(scheme: "BdaysReminder-staging",
               project: './ios/BdaysReminder.xcodeproj',
               include_bitcode: true)
   end
