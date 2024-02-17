@@ -22,11 +22,17 @@ platform :ios do
   end
 
   desc 'IOS build and release to beta.'
+#   lane :beta do
+#       staging_build
+#       upload_to_testflight(username: '', app_identifier: 'BdaysReminder')
+#       commit_version_bump(message: 'bump build')
+#       push_to_git_remote
+#   end
+
   lane :beta do
-      staging_build
-      upload_to_testflight(username: '', app_identifier: 'BdaysReminder')
-      commit_version_bump(message: 'bump build')
-      push_to_git_remote
+    build_app(scheme: "BdaysReminder-stagings",
+              workspace: "BdaysReminder.xcworkspace",
+              include_bitcode: true)
   end
 
     lane :release do
