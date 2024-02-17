@@ -22,20 +22,20 @@ platform :ios do
   end
 
   desc 'IOS build and release to beta.'
-#   lane :beta do
-#       staging_build
-#       upload_to_testflight(username: '', app_identifier: 'BdaysReminder')
-#       commit_version_bump(message: 'bump build')
-#       push_to_git_remote
-#   end
-
   lane :beta do
-    get_certificates           # invokes cert
-    get_provisioning_profile   # invokes sigh
-    build_app(scheme: "BdaysReminder-staging",
-              project: './ios/BdaysReminder.xcodeproj',
-              include_bitcode: true)
+      staging_build
+      upload_to_testflight(username: '', app_identifier: 'BdaysReminder')
+      commit_version_bump(message: 'bump build')
+      push_to_git_remote
   end
+
+#   lane :beta do
+#     get_certificates           # invokes cert
+#     get_provisioning_profile   # invokes sigh
+#     build_app(scheme: "BdaysReminder-staging",
+#               project: './ios/BdaysReminder.xcodeproj',
+#               include_bitcode: true)
+#   end
 
     lane :release do
         release_build
